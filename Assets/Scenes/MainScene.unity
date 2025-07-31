@@ -310,6 +310,7 @@ GameObject:
   - component: {fileID: 998000486}
   - component: {fileID: 998000488}
   - component: {fileID: 998000487}
+  - component: {fileID: 998000489}
   m_Layer: 0
   m_Name: Moonlet
   m_TagString: Untagged
@@ -461,6 +462,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &998000489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998000483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b389140e8978ff47930b19622d65a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftOffset: 1
+  rightOffset: 5
+  bottomOffset: 1
 --- !u!1 &1037464528
 GameObject:
   m_ObjectHideFlags: 0
