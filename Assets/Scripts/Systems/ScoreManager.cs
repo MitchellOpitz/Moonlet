@@ -21,4 +21,9 @@ public class ScoreManager : MonoBehaviour
         score++;
         scoreText.text = "Planets visited: " + score.ToString();
     }
+
+    public void ResetScore()
+    {
+        score = 0;
+    }
 }

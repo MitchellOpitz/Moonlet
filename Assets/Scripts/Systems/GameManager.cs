@@ -11,12 +11,14 @@ public class GameManager : MonoBehaviour
     {
         PlayerBoundsChecker.OnPlayerDeath += HandleGameOver;
         TitleScreen.OnGameStart += HandleGameStart;
+        GameOverManager.OnGameStart += HandleGameStart;
     }
 
     void OnDisable()
     {
         PlayerBoundsChecker.OnPlayerDeath -= HandleGameOver;
         TitleScreen.OnGameStart -= HandleGameStart;
+        GameOverManager.OnGameStart -= HandleGameStart;
     }
 
     void HandleGameOver()
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     void HandleGameStart()
     {
+        FindObjectOfType<ScoreManager>().ResetScore();
         FindObjectOfType<PlanetSpawner>().StartSpawner();
         FindObjectOfType<PlanetScroller>().StartScroller();
         fader.FadeIn(scoreText);
