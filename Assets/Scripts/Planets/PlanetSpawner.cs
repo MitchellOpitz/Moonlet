@@ -8,19 +8,28 @@ public class PlanetSpawner : MonoBehaviour
     public float spawnOffsetX = 3f;
 
     private float nextSpawnTime;
-
-    void Start()
-    {
-        ScheduleNextSpawn();
-    }
+    private bool isSpawning = false;
 
     void Update()
     {
+        if (!isSpawning) return;
+
         if (Time.time >= nextSpawnTime)
         {
             SpawnPlanet();
             ScheduleNextSpawn();
         }
+    }
+
+    public void StartSpawner()
+    {
+        isSpawning = true;
+        nextSpawnTime = 0f;
+    }
+
+    public void StopSpawner()
+    {
+        isSpawning = false;
     }
 
     void ScheduleNextSpawn()

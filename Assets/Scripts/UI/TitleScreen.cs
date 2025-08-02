@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
 using System.Collections;
+using System;
 
 public class TitleScreen : MonoBehaviour
 {
@@ -9,9 +10,9 @@ public class TitleScreen : MonoBehaviour
     public TMP_Text subtitleText;
     public float fadeDuration = 1f;
     public float postFadeDelay = 1f;
-    public UnityEvent onStartGame;
 
     private UIFader fader;
+    public static event Action OnGameStart;
 
     private void Start()
     {
@@ -32,6 +33,6 @@ public class TitleScreen : MonoBehaviour
         fader.FadeOut(subtitleText);
         yield return new WaitForSeconds(fadeDuration + postFadeDelay);
 
-        onStartGame.Invoke();
+        OnGameStart?.Invoke();
     }
 }

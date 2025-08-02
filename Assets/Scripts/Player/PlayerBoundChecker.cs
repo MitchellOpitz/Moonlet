@@ -1,7 +1,10 @@
 using UnityEngine;
+using System;
 
 public class PlayerBoundsChecker : MonoBehaviour
 {
+    public static event Action OnPlayerDeath;
+
     public float leftOffset = 3f;
     public float rightOffset = 5f;
     public float bottomOffset = 2f;
@@ -20,7 +23,7 @@ public class PlayerBoundsChecker : MonoBehaviour
         Vector3 pos = transform.position;
         if (pos.x < left || pos.x > right || pos.y < bottom)
         {
-            Debug.Log("Player died");
+            OnPlayerDeath?.Invoke();
             Destroy(gameObject);
         }
     }
