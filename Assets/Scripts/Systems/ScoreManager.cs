@@ -24,6 +24,7 @@ public class ScoreManager : MonoBehaviour
 
     public void ResetScore()
     {
-        score = 0;
+        score = -1;
+        AddPoint();
     }
 }
