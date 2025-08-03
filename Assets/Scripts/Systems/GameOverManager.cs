@@ -11,6 +11,7 @@ public class GameOverManager : MonoBehaviour
     public ScoreManager scoreManager;
     public UIFader fader;
     public SpriteFader spriteFader;
+    public AudioSource startSFX;
 
     public Vector3 playerStartPosition;
     public Vector3 planetStartPosition;
@@ -41,6 +42,7 @@ public class GameOverManager : MonoBehaviour
         gameOverScoreText.text = "Planets visited: " + scoreManager.score.ToString();
 
         yield return new WaitUntil(() => Input.anyKeyDown);
+        if (startSFX != null) startSFX.Play();
 
         fader.FadeOut(gameOverText);
         fader.FadeOut(gameOverScoreText);

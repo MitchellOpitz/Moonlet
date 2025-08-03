@@ -10,6 +10,7 @@ public class TitleScreen : MonoBehaviour
     public TMP_Text subtitleText;
     public float fadeDuration = 1f;
     public float postFadeDelay = 1f;
+    public AudioSource startSFX;
 
     private UIFader fader;
     public static event Action OnGameStart;
@@ -28,6 +29,7 @@ public class TitleScreen : MonoBehaviour
         yield return new WaitForSeconds(fadeDuration);
 
         yield return new WaitUntil(() => Input.anyKeyDown);
+        if (startSFX != null) startSFX.Play();
 
         fader.FadeOut(titleText);
         fader.FadeOut(subtitleText);

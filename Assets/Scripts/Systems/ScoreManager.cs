@@ -5,6 +5,8 @@ public class ScoreManager : MonoBehaviour
 {
     public int score = 0;
     public TMP_Text scoreText;
+    public AudioSource scoreSFX;
+    private bool firstTime = true;
 
     private void OnEnable()
     {
@@ -20,11 +22,14 @@ public class ScoreManager : MonoBehaviour
     {
         score++;
         scoreText.text = "Planets visited: " + score.ToString();
+        if (!firstTime && scoreSFX != null) scoreSFX.Play();
+        firstTime = false;
     }
 
     public void ResetScore()
     {
         score = -1;
+        firstTime = true;
         AddPoint();
     }
 }

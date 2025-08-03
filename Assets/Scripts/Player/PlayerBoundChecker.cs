@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 public class PlayerBoundsChecker : MonoBehaviour
 {
@@ -8,6 +9,13 @@ public class PlayerBoundsChecker : MonoBehaviour
     public float leftOffset = 3f;
     public float rightOffset = 5f;
     public float bottomOffset = 2f;
+    public AudioSource deathSFX;
+
+    private void Start()
+    {
+        GameObject go = GameObject.Find("GameOver");
+        if (go != null) deathSFX = go.GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -23,6 +31,7 @@ public class PlayerBoundsChecker : MonoBehaviour
         Vector3 pos = transform.position;
         if (pos.x < left || pos.x > right || pos.y < bottom)
         {
+            if (deathSFX != null) deathSFX.Play();
             OnPlayerDeath?.Invoke();
             Destroy(gameObject);
         }

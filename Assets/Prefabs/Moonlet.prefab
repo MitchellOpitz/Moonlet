@@ -181,6 +181,7 @@ MonoBehaviour:
   leftOffset: 1
   rightOffset: 5
   bottomOffset: 1
+  deathSFX: {fileID: 0}
 --- !u!1001 &1361741877473705019
 PrefabInstance:
   m_ObjectHideFlags: 0
