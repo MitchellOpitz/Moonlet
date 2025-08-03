@@ -11,6 +11,8 @@ public class UIFader : MonoBehaviour
 
     private IEnumerator Fade(TMP_Text text, float from, float to, float duration)
     {
+        if (text == null) yield break;
+
         float time = 0f;
         Color c = text.color;
         while (time < duration)

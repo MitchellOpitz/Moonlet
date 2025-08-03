@@ -11,15 +11,22 @@ public class SpriteFader : MonoBehaviour
 
     private IEnumerator Fade(SpriteRenderer sprite, float from, float to, float duration)
     {
+        if (sprite == null) yield break;
+
         float time = 0f;
         Color c = sprite.color;
         while (time < duration)
         {
+            if (sprite == null) yield break;
+
             float t = time / duration;
             sprite.color = new Color(c.r, c.g, c.b, Mathf.Lerp(from, to, t));
             time += Time.deltaTime;
             yield return null;
         }
-        sprite.color = new Color(c.r, c.g, c.b, to);
+
+        if (sprite != null)
+            sprite.color = new Color(c.r, c.g, c.b, to);
     }
+
 }
